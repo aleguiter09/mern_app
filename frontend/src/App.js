@@ -1,15 +1,30 @@
+import React from "react";
+import { BrowserRouter, Switch, Route, NavLink } from "react-router-dom";
+
+import Login from "./components/login.js";
+import Home from "./components/home.js";
+import Register from "./components/register.js";
+
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a className="App-link" href="https://reactjs.org">
-          Learn React
-        </a>
-      </header>
-    </div>
+    <React.StrictMode>
+      <BrowserRouter>
+        <div className="header">
+          <NavLink exact activeClassName="active" to="/">
+            Home
+          </NavLink>
+          <NavLink to="/login">Login</NavLink>
+          <NavLink to="/register">Register</NavLink>
+        </div>
+        <div className="container">
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/login" component={Login} />
+            <Route path="/register" component={Register} />
+          </Switch>
+        </div>
+      </BrowserRouter>
+    </React.StrictMode>
   );
 }
 
